@@ -13,8 +13,11 @@ import com.example.films.ui.view.adapter.FilmsAdapter
 import com.example.films.ui.view.adapter.OnItemClickListener
 import com.example.films.ui.viewmodel.FilmViewModel
 import android.content.Intent
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     private lateinit var binding: ActivityMainBinding

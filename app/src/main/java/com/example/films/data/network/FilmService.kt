@@ -1,20 +1,17 @@
 package com.example.films.data.network
 
-import com.example.films.core.RetrofitHelper
 import com.example.films.data.model.FilmModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 
-class FilmService {
-
-    // Instancia de Retrofit
-    private val retrofit = RetrofitHelper.getRetrofit()
+class FilmService @Inject constructor(private val api: FilmAPIClient) {
 
     // Método para obtener todas las películas
     suspend fun getFilms(): List<FilmModel> {
         return withContext(Dispatchers.IO) {
-            val response = retrofit.create(FilmAPIClient::class.java).getFilms()
+            val response = api.getFilms()
             response.body() ?: emptyList()
         }
     }

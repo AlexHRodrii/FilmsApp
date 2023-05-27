@@ -3,9 +3,9 @@ package com.example.films.data
 import com.example.films.data.model.FilmModel
 import com.example.films.data.model.FilmProvider
 import com.example.films.data.network.FilmService
+import javax.inject.Inject
 
-class FilmRepository {
-    private val api = FilmService()
+class FilmRepository @Inject constructor(private val api: FilmService) {
 
     suspend fun getFilms(): List<FilmModel> {
         val response = api.getFilms()

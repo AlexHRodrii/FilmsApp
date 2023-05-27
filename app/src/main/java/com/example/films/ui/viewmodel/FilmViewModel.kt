@@ -5,13 +5,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.films.data.model.FilmModel
 import com.example.films.domain.GetFilmsUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FilmViewModel: ViewModel() {
+@HiltViewModel
+class FilmViewModel @Inject constructor(
+    private val getFilmsUseCase: GetFilmsUseCase
+): ViewModel() {
     val films = MutableLiveData<List<FilmModel>>()
     val isLoading = MutableLiveData<Boolean>()
-
-    var getFilmsUseCase = GetFilmsUseCase()
 
     fun onCreate() {
         viewModelScope.launch {

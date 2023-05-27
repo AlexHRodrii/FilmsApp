@@ -5,9 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.films.data.model.FilmModel
 import com.example.films.databinding.DetailFilmBinding
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var binding: DetailFilmBinding
 
