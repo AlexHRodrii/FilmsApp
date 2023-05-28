@@ -13,6 +13,10 @@ import com.example.films.ui.view.adapter.FilmsAdapter
 import com.example.films.ui.view.adapter.OnItemClickListener
 import com.example.films.ui.viewmodel.FilmViewModel
 import android.content.Intent
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import com.example.films.data.FilmRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -45,5 +49,10 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         intent.putExtra("film", film)
         startActivity(intent)
 
+    }
+
+    fun deleteButton(view: View) {
+        val buttonPressed: Button = view as Button
+        filmViewModel.deleteFilm(buttonPressed.tag as String)
     }
 }

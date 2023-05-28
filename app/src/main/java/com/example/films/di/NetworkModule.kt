@@ -1,9 +1,11 @@
 package com.example.films.di
 
+import android.content.Context
 import com.example.films.data.network.FilmAPIClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,5 +30,13 @@ object NetworkModule {
     @Provides
     fun provideAPIClient(retrofit: Retrofit): FilmAPIClient {
         return retrofit.create(FilmAPIClient::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideContext(
+        @ApplicationContext context: Context,
+    ): Context {
+        return context
     }
 }
